@@ -1,0 +1,685 @@
+//////////////////////////////////////////
+/// DECLARING THE GRID AND THE HEADING ///
+//////////////////////////////////////////
+.authors {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba($color-black, 0.8), rgba($color-black, 0.8)), url(background-1.jpg);
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    grid-template-columns:  24rem repeat(7, minmax(10rem, 15rem));
+    grid-template-rows: 1fr 1fr 1fr 17rem;
+    grid-gap: 2rem;
+
+    @media only screen and (max-width: $bp-xxl){
+        grid-template-columns: repeat(7, minmax(8rem, 17rem));
+        grid-template-rows: 1fr;
+    }
+
+    @media only screen and (max-width: $bp-sm){
+        grid-template-columns: repeat(7, minmax(min-content, 17rem));
+    }
+    @media only screen and (max-width: $bp-xsm){ grid-template-columns: repeat(5, minmax(min-content, 17rem)); }
+
+    // HEADING AND MEDIA QUERIES FOR IT
+    &__heading{
+        color: $color-white;
+        font-size: 4rem;
+        font-weight: 100; 
+        text-transform: uppercase;
+        letter-spacing: .2rem;
+        border-bottom: 1px solid $color-grey;
+        padding-bottom: 3rem;
+        position: relative;
+        align-self: flex-end;
+        justify-self: center;
+        grid-column: 4/6;
+        grid-row: 1/2;
+
+        @media only screen and (max-width: $bp-xxl){ align-self: center; }
+
+        @media only screen and (min-width: $bp-md-sm){
+            &:hover {
+                font-size: 4.5rem;
+                border: none;
+                transition: all .3s;
+                transform: translateY(-1rem);
+            }
+        }
+        @media only screen and (max-width: $bp-xsm){
+            grid-column: 3/5;
+            grid-row: 1/2;
+        }
+
+        @media only screen and (max-width: $bp-xsm){
+            grid-column: 3/6;
+            justify-self: start;
+        }
+    }
+
+    // ALIGNING THE SIDEBAR SPECIALLY FOR THE CURRENT PAGE AND MEDIA QUERIES FOR IT
+    .sidebar{
+        &__created-by{ margin-bottom: -2rem; }
+
+        @media only screen and (max-width: $bp-xxl){
+            .active{
+                padding: 4.5rem 1.5rem 1.6rem 1.5rem;
+
+                @media only screen and (max-width: $bp-md-sm){
+                    padding: 3rem 1.5rem 1.6rem 1.5rem;
+                    font-size: 1.6rem;
+                }
+
+                @media only screen and (max-width: $bp-xsm){
+                    padding: 1.5rem 1rem 1.5rem 1rem;
+                    font-size: 1.1rem;
+                }
+
+                @media only screen and (max-width: $bp-xsm){
+                    font-size: .7rem;
+                }
+            }
+        }
+    }
+}
+
+/////////////////////////////////////////////////////////////
+/// ALIGNING ALL ITEMS IN THE GRID AND WRITING ANIMATIONS ///
+/////////////////////////////////////////////////////////////
+
+.author{
+    z-index: 10;
+    position: relative;
+    overflow: hidden;
+
+    &__image{
+        width: 15rem;
+        height: 18rem;
+        display: block;
+        padding: 1rem;
+        border: 1px solid $color-white;
+        border-radius: 2rem;
+    }
+
+    @media only screen and (max-width: $bp-xxl){
+        &__image{
+            width: 10rem;
+            height: 13rem;
+        }
+    }
+
+    @media only screen and (max-width: $bp-md-sm){
+        &__image{
+            width: 7rem;
+            height: 10rem;
+        }
+    }
+
+    @media only screen and (max-width: $bp-xsm){
+        &__image{
+            width: 6rem;
+            height: 8rem;
+            border-radius: 0;
+        }
+    }
+
+    @media only screen and (max-width: $bp-xxsm){
+        &__image{
+            width: 4.5rem;
+            height:6.5rem;
+            padding: 0;
+            align-self: flex-start;
+        }
+    }
+
+    // BLUR ALL IMAGES WHEN HOVERED
+    @media only screen and (min-width: $bp-xxl){
+        &:hover{
+            transition: all .5s .2s;
+            filter: blur(4px);
+        }
+    }
+
+    // HOVER ANIMATION FOR UPPER ROW TO MAKE THE IMAGE DARKER
+    &--upper::before {
+        content: '';
+        height: 18rem;
+        width: 15rem;
+        background-color: $color-black-transparent-2;
+        position: absolute;
+        border-radius: 2rem;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transition: all .5s;
+
+        @media only screen and (max-width: $bp-xxl){
+            width: 10rem;
+            height: 13rem;
+        }
+    }
+
+    @media only screen and (min-width: $bp-xxl){
+        &--upper:hover::before {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+        }
+    }
+
+    &--upper::before {
+        -webkit-transform: translateY(100%);
+                transform: translateY(100%);  
+    }
+    
+    // HOVER ANIMATION FOR BOTTOM ROW TO MAKE THE IMAGE DARKER
+    &--bottom::before{
+        content: '';
+        height: 18rem;
+        width: 15rem;
+        background-color: $color-black-transparent-2;
+        position: absolute;
+        border-radius: 2rem;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transition: all .5s;
+
+        @media only screen and (max-width: $bp-xxl){
+            width: 10rem;
+            height: 13rem;
+        }
+    }
+
+    @media only screen and (min-width: $bp-xxl){
+        &--bottom:hover::before{
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+        }
+    }
+
+    &--bottom::before{
+        -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);    
+    }
+}
+
+///////////////////////////////////////////////////////////
+// PLACE EVERY AUTHOR PHOTO IN A SPECIFIC PLACE IN THE GRID
+///////////////////////////////////////////////////////////
+.link--1{
+    grid-column: 8/9;
+    grid-row: 2/3;
+
+    @media only screen and (max-width: $bp-laptop-big){
+        grid-column: 1/2;
+        grid-row: 4/5;
+    }
+}
+.link--2{
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+.link--3{
+    grid-column: 3/4;
+    grid-row: 3/4;
+}
+.link--4{
+    grid-column: 4/5;
+    grid-row: 3/4;
+}
+.link--5{
+    grid-column: 5/6;
+    grid-row: 3/4;
+}
+.link--6{
+    grid-column: 6/7;
+    grid-row: 3/4;
+}
+
+.link--7{
+    grid-column: 7/8;
+    grid-row: 3/4;
+}
+
+.link--8{
+    grid-column: 8/9;
+    grid-row: 3/4;
+}
+
+.link--9{
+    grid-column: 2/3;
+    grid-row: 4/5;
+}
+
+.link--10{
+    grid-column: 3/4;
+    grid-row: 4/5;
+}
+
+.link--11{
+    grid-column: 4/5;
+    grid-row: 4/5;
+}
+
+.link--12{
+    grid-column: 5/6;
+    grid-row: 4/5;
+}
+
+.link--13{
+    grid-column: 6/7;
+    grid-row: 4/5;
+}
+
+.link--14{
+    grid-column: 7/8;
+    grid-row: 4/5;
+}
+
+.link--15{
+    grid-column: 8/9;
+    grid-row: 4/5;
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+// PLACE EVERY AUTHOR PHOTO IN A SPECIFIC PLACE IN THE GRID ! DIFFERENT FOR PHONES !
+////////////////////////////////////////////////////////////////////////////////////
+@media only screen and (max-width: $bp-xsm){
+    .link--1{
+        grid-column: 2/3;
+        grid-row: 2/3;
+    }
+    .link--2{
+        grid-column: 3/4;
+        grid-row: 2/3;
+    }
+    .link--3{
+        grid-column: 4/5;
+        grid-row: 2/3;
+    }
+    .link--4{
+        grid-column: 5/6;
+        grid-row: 2/3;
+    }
+    .link--5{
+        grid-column: 6/7;
+        grid-row: 2/3;
+    }
+    .link--6{
+        grid-column: 2/3;
+        grid-row: 3/4;
+    }
+
+    .link--7{
+        grid-column: 3/4;
+        grid-row: 3/4;
+    }
+
+    .link--8{
+        grid-column: 4/5;
+        grid-row: 3/4;
+    }
+
+    .link--9{
+        grid-column: 5/6;
+        grid-row: 3/4;
+    }
+
+    .link--10{
+        grid-column: 6/7;
+        grid-row: 3/4;
+    }
+
+    .link--11{
+        grid-column: 2/3;
+        grid-row: 4/5;
+    }
+
+    .link--12{
+        grid-column: 3/4;
+        grid-row: 4/5;
+    }
+
+    .link--13{
+        grid-column: 4/5;
+        grid-row: 4/5;
+    }
+
+    .link--14{
+        grid-column: 5/6;
+        grid-row: 4/5;
+    }
+
+    .link--15{
+        grid-column: 6/7;
+        grid-row: 4/5;
+    }
+}
+
+
+// SHOW THE DETAILS FOR THE AUTHOR IMAGE WHEN HOVERED
+@media only screen and (min-width: $bp-xxl){
+    .link:hover + .details--upper > *{
+        transition: all .5s;
+        transform: translateY(-17rem);
+        visibility: visible;
+    }
+}
+
+@media only screen and (min-width: $bp-xxl){
+    .link:hover + .details--bottom > *{
+        transition: all .5s;
+        transform: translateY(17rem);
+        visibility: visible;
+    }
+}
+
+////////////////////////////////////////////////////
+/// ALIGNING ALL THE AUTHORS DETAILS AND BUTTONS ///
+////////////////////////////////////////////////////
+.details{
+    // DECLARING ALL PROPERTIES THAT A COMMON FOR EACH AUTHOR
+    a:link,
+    a:visited {
+        color: $color-white;
+        text-decoration: none;
+        position: absolute;
+        padding: 1rem 3rem;
+        border: 1px solid $color-white;
+        background-color: transparent;
+        visibility: hidden;
+        pointer-events:none;
+    }
+
+    .first-name{
+        color: $color-white;
+        font-size: 1.7rem;
+        font-weight: 100;
+        position: absolute;
+        visibility: hidden;
+        pointer-events:none;
+    }
+
+    .second-name{
+        color: $color-white;
+        font-size: 1.7rem;
+        font-weight: 100;
+        position: absolute;
+        visibility: hidden;
+        pointer-events:none;
+    }
+
+    // INDIVIDUALLY FLOAT EACH DETAILS TO BE ON THE CORRECT AUTHOR ( 1440PX WIDTH 768PX HEIGHT (MACBOOK PRO 13" HEHEHE - BEST )
+    .first-name--1{
+        top: 50%;
+        left: 92.5%;
+        z-index: 30;
+    }
+
+    .second-name--1{
+        top: 53%;
+        left: 90.4%;
+        z-index: 30;
+    }
+
+    .details__btn--1{
+        z-index: 30;
+        top: 63%;
+        left: 90.7%;
+    }
+
+    .first-name--2{
+        top: 75%;
+        left: 21.5%;
+        z-index: 30;
+    }
+
+    .second-name--2{
+        top: 78%;
+        left: 21.3%;
+        z-index: 30;
+    }
+
+    .details__btn--2{
+        z-index: 30;
+        top: 88%;
+        left: 19.7%;
+    }
+
+    .first-name--3{
+        top: 75%;
+        left: 34.2%;
+        z-index: 30;
+    }
+
+    .second-name--3{
+        top: 78%;
+        left: 33.5%;
+        z-index: 30;
+    }
+
+    .details__btn--3{
+        z-index: 30;
+        top: 88%;
+        left: 31.7%;
+    }
+
+    .first-name--4{
+        top: 75%;
+        left: 44.6%;
+        z-index: 30;
+    }
+
+    .second-name--4{
+        top: 78%;
+        left: 45.2%;
+        z-index: 30;
+    }
+
+    .details__btn--4{
+        z-index: 30;
+        top: 88%;
+        left: 43.3%;
+    }
+
+    .first-name--5{
+        top: 75%;
+        left: 56.4%;
+        z-index: 30;
+    }
+
+    .second-name--5{
+        top: 78%;
+        left: 57.1%;
+        z-index: 30;
+    }
+
+    .details__btn--5{
+        z-index: 30;
+        top: 88%;
+        left: 55.1%;
+    }
+
+    .first-name--6{
+        top: 75%;
+        left: 68.6%;
+        z-index: 30;
+    }
+
+    .second-name--6{
+        top: 78%;
+        left: 67.6%;
+        z-index: 30;
+    }
+
+    .details__btn--6{
+        z-index: 30;
+        top: 88%;
+        left: 67%;
+    }
+
+    .first-name--7{
+        top: 75%;
+        left: 81%;
+        z-index: 30;
+    }
+
+    .second-name--7{
+        top: 78%;
+        left: 80.8%;
+        z-index: 30;
+    }
+
+    .details__btn--7{
+        z-index: 30;
+        top: 88%;
+        left: 78.8%;
+    }
+
+    .first-name--8{
+        top: 75%;
+        left: 91.4%;
+        z-index: 30;
+    }
+
+    .second-name--8{
+        top: 78%;
+        left: 91.9%;
+        z-index: 30;
+    }
+
+    .details__btn--8{
+        z-index: 30;
+        top: 88%;
+        left: 90.7%;
+    }
+
+    .first-name--9{
+        top: 57.5%;
+        left: 22%;
+        z-index: 30;
+    }
+
+    .second-name--9{
+        top: 60.5%;
+        left: 21.8%;
+        z-index: 30;
+    }
+
+    .details__btn--9{
+        z-index: 30;
+        top: 70%;
+        left: 19.8%;
+    }
+
+    .first-name--10{
+        top: 57.5%;
+        left: 33%;
+        z-index: 30;
+    }
+
+    .second-name--10{
+        top: 60.5%;
+        left: 33%;
+        z-index: 30;
+    }
+
+    .details__btn--10{
+        z-index: 30;
+        top: 70%;
+        left: 31.5%;
+    }
+
+    .first-name--11{
+        top: 57.5%;
+        left: 45%;
+        z-index: 30;
+    }
+
+    .second-name--11{
+        top: 60.5%;
+        left: 44.3%;
+        z-index: 30;
+    }
+
+    .details__btn--11{
+        z-index: 30;
+        top: 70%;
+        left: 43.3%;
+    }
+
+    .first-name--12{
+        top: 57.5%;
+        left: 57.2%;
+        z-index: 30;
+    }
+
+    .second-name--12{
+        top: 60.5%;
+        left: 56.6%;
+        z-index: 30;
+    }
+
+    .details__btn--12{
+        z-index: 30;
+        top: 70%;
+        left: 55.1%;
+    }
+
+    .first-name--13{
+        top: 57.5%;
+        left: 68.7%;
+        z-index: 30;
+    }
+
+    .second-name--13{
+        top: 60.5%;
+        left: 67.5%;
+        z-index: 30;
+    }
+
+    .details__btn--13{
+        z-index: 30;
+        top: 70%;
+        left: 67%;
+    }
+
+    .first-name--14{
+        top: 57.5%;
+        left: 80.4%;
+        z-index: 30;
+    }
+
+    .second-name--14{
+        top: 60.5%;
+        left: 80.8%;
+        z-index: 30;
+    }
+
+    .details__btn--14{
+        z-index: 30;
+        top: 70%;
+        left: 78.8%;
+    }
+
+    .first-name--15{
+        top: 57.5%;
+        left: 92.2%;
+        z-index: 30;
+    }
+
+    .second-name--15{
+        top: 60.5%;
+        left: 90.8%;
+        z-index: 30;
+    }
+
+    .details__btn--15{
+        z-index: 30;
+        top: 70%;
+        left: 90.6%;
+    }
+}

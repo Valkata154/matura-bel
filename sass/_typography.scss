@@ -1,0 +1,480 @@
+//////////////
+/// BUTTON ///
+//////////////
+.btn {
+    color: $color-white;
+    background-color: transparent;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.8rem 6rem;
+    display: block;
+    position: absolute;
+    border: 1px solid $color-white;
+    border-radius: 10rem;
+    outline: none;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 30;
+
+    &{ top: 60%; }
+
+    // CLICK ANIMATION
+    &:active{ transform: translateY(0); }
+
+    @media only screen and (max-width: $bp-md){
+        font-size: 1rem;
+        padding: 1.5rem 4rem;
+    }
+
+    @media only screen and (max-width: $bp-xsm){ padding: 1.5rem 2.5rem; }
+
+    @media only screen and (max-width: $bp-xxsm){ padding: 1.5rem; }
+
+    // BUTTON ANIMATION WHEN HOVERED
+    @media all and (min-width: $bp-md) {
+        &:hover{
+            color: $color-white;
+            border: 1px solid $color-white;
+            transform: translateY(-1rem); 
+        }
+    }
+
+    // CHANGING THE HEADING THE BUTTON IS HOVERED
+    @media all and (min-width: $bp-l) {
+        &:hover ~ .heading{
+            color: $color-black;
+            background-color: $color-black-transparent;
+            border-bottom: none;
+            border-radius: 10rem;
+            padding: 1rem;
+            transition: transform .5s;
+        }
+    }
+
+    // BUTTON HOVER ANIMATION EFFECT PROPERTIES
+    &::before {
+        content: '';
+        background-color: $color-black-transparent;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transition: all .5s;
+    }
+
+    @media all and (min-width: $bp-l) {
+        &:hover::before {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+        }
+    }
+    
+    // FIRST BUTTON PROPERTIES ALIGNMENT
+    &--1{ left: 12%; }
+
+    @media only screen and (max-width: $bp-xsm){
+        &--1{ left: 8%; }
+    }
+    @media only screen and (max-width: $bp-xxsm){
+        &--1{ left: 5%; }
+    }
+
+    // DECREASE THE IMAGE AND MAKE BACKGROUND BRIGHT
+    @media all and (min-width: $bp-l) {
+        &--1:hover ~ .landing{
+            background-image:  url(image-pen.jpg);
+            @media all and (min-width: $bp-xl) {
+                .img--1 {
+                    width: 40%;
+                    -webkit-clip-path: polygon(45% 0, 100% 0%, 100% 100%, 15% 100%);
+                    clip-path: polygon(45% 0, 100% 0%, 100% 100%, 15% 100%);
+                    transition: width .5s ease;
+                }
+            }
+        }
+    }
+
+    // ROTATE THE HEADING
+    @media all and (min-width: $bp-l) {
+        &--1:hover ~ .heading{ transform: rotate(1deg); }
+    }
+
+    // FIRST BUTTON ANIMATION EFFECT
+    &--1::before {
+        -webkit-transform: translateX(-100%);
+                transform: translateX(-100%);
+      }
+
+    // SECOND BUTTON PROPERTIES
+    &--2{ right: 12%; }
+
+    // INCREASE THE IMAGE AND MAKE IT BRIGHT
+    @media all and (min-width: $bp-l) {
+        &--2:hover ~ .landing{
+            .img--1 {
+                filter: brightness(80%);
+                @media all and (min-width: $bp-xl) {
+                    width: 87%;
+                    transition: width .5s ease;
+                    -webkit-clip-path: polygon(29% 0, 100% 0%, 100% 100%, 18% 100%);
+                    clip-path: polygon(29% 0, 100% 0%, 100% 100%, 18% 100%);
+                }
+            }
+        }
+    }
+    
+    // ROTATE THE HEADING 
+    @media all and (min-width: $bp-l) {
+        &--2:hover ~ .heading{ transform: rotate(-1deg); }
+    }
+
+    // SECOND BUTTON ANIMATION EFFECT
+    &--2::before {
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+}
+
+// HEADING AND MEDIA QUERIES FOR IT
+.heading {
+    color: $color-white;
+    font-size: 4rem;
+    letter-spacing: .2rem;
+    text-transform: uppercase;
+    font-weight: 100;
+    border-bottom: 1px solid $color-grey;
+    padding-bottom: 3rem;
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    z-index: 11;
+
+    @media all and (min-width: $bp-l) {
+        &:hover {
+            font-size: 3.5rem;
+            border: none;
+            left: 17%;
+            transition: all .3s;
+            transform: translateY(-1rem);
+        }
+    }
+
+    @media all and (min-width: $bp-xl) {
+        &:hover {
+            font-size: 4.5rem;
+            border: none;
+            left: 17%;
+            transition: all .3s;
+            transform: translateY(-1rem);
+        }
+    }
+
+    @media only screen and (max-width: $bp-xl){ font-size: 3rem; }
+
+    @media only screen and (max-width: $bp-md){ font-size: 2rem; }
+
+    @media only screen and (max-width: $bp-sm){
+        font-size: 1.5rem;
+        text-align: center;
+        pointer-events: none;
+    }
+
+    @media only screen and (max-width: $bp-xsm){
+        font-size: 1rem;
+        left: 16%;
+    }
+
+    @media only screen and (max-width: $bp-xxsm){
+        font-size: .7rem;
+        left: 20%;
+    }
+}
+
+/////////////////////////////////////////////////////////////////
+/// SIDEBAR, SIDEBAR BUTTONS AND ICON GLOBAL -----LEFT------- ///
+/////////////////////////////////////////////////////////////////
+.sidebar {
+    @media only screen and (min-width: $bp-xxl){
+        grid-row: 1 / -1;
+        background-color: transparent;
+        margin-right: 7rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        a:link,
+        a:visited{
+            color: $color-white;
+            text-decoration: none;
+        }
+
+        a:active li:not(.active){ transform: translateY(1rem); }
+
+        &__created-by{
+            color: $color-white;
+            font-size: 1.1rem;
+            font-weight: 100;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        &__list{
+            color: $color-white;
+            font-size: 2rem;
+            font-weight: 100;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: .07rem;
+            list-style: none;
+            margin-top: -28rem;
+        }
+
+        // SHAKE ANIMATION FOR ICON
+        &__icon{
+            font-size: 7.5rem;
+            margin: 2.5rem 5rem 5rem 5rem;
+            color: $color-black-transparent;
+
+            &:hover { animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both; }
+            
+            @keyframes shake {
+                10%, 90% { transform: translate3d(-1px, 0, 0); }
+                
+                20%, 80% { transform: translate3d(2px, 0, 0); }
+                
+                30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+                
+                40%, 60% { transform: translate3d(4px, 0, 0); }
+            }
+        }
+
+        // CREATING AN ACTIVE BUTTON
+        .active{
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            position: relative;
+            
+            &::before {
+                content: '';
+                background-color: $color-black-transparent;
+                position: absolute;
+                border-bottom: 1px solid $color-white;
+                border-top: 1px solid $color-white;
+                border-right: 1px solid $color-white;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                transition: all .5s cubic-bezier(1, 0, 0, 1);
+                -webkit-transform: translateX(0);
+                    transform: translateX(0);
+            }
+        }
+
+        &__item:not(.active){
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            position: relative;
+            
+            &::before {
+                content: '';
+                background-color: $color-black-transparent;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                transition: all .5s cubic-bezier(1, 0, 0, 1);
+                -webkit-transform: translateX(-100%);
+                    transform: translateX(-100%);
+            }
+
+            &:hover::before {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+
+            &:hover{
+                border-bottom: 1px solid $color-white;
+                border-top: 1px solid $color-white;
+                border-right: 1px solid $color-white;
+            }
+        }
+    }
+
+/////////////////////////////////////////////////////////////////
+/// SIDEBAR, SIDEBAR BUTTONS AND ICON GLOBAL -----TOP------- ///
+/////////////////////////////////////////////////////////////////
+    @media only screen and (max-width: $bp-xxl){
+        grid-column: 1/9;
+        grid-row: 1 / 2;
+        background-color: transparent;
+        display: flex;
+        justify-content: space-between;
+
+        a:link,
+        a:visited{
+            color: $color-white;
+            text-decoration: none;
+        }
+
+        a:active li:not(.active){ transform: translateY(-1rem); }
+
+        @media only screen and (min-width: $bp-sm){
+            &__created-by{
+                color: $color-white;
+                font-size: 1.1rem;
+                font-weight: 100;
+                text-align: center;
+                padding: 2rem 1rem;
+                width: min-content;
+                margin-top: .7rem;
+
+                @media only screen and (max-width: $bp-md-sm){
+                    margin-top: 0;
+                    padding: 1rem;
+                }
+            }
+        }
+
+        @media only screen and (max-width: $bp-sm){
+            &__created-by{
+                visibility: hidden;
+            }
+        }
+
+        &__list{
+            color: $color-white;
+            font-size: 2rem;
+            font-weight: 100;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: .07rem;
+            list-style: none;
+            justify-self: center;
+            display: flex;
+
+            @media only screen and (max-width: $bp-md-sm){ font-size: 1.6rem; }
+
+            @media only screen and (max-width: $bp-xsm){ font-size: 1.1rem; }
+
+            @media only screen and (max-width: $bp-xxsm){ font-size: .7rem; }
+        }
+
+        // SHAKE ANIMATION
+        &__icon{
+            font-size: 7.5rem;
+            margin: 2.5rem 5rem 5rem 5rem;
+            color: $color-black-transparent;
+
+            @media only screen and (max-width: $bp-md-sm){
+                font-size: 2.7rem;
+                margin: 2rem;
+            }
+
+            @media only screen and (max-width: $bp-xsm){
+                font-size: 1.7rem;
+                margin: 1rem;
+            }
+
+            @media only screen and (min-width: $bp-md-sm){
+                &:hover { animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both; }
+            }
+            
+            @keyframes shake {
+                10%, 90% { transform: translate3d(-1px, 0, 0); }
+                
+                20%, 80% { transform: translate3d(2px, 0, 0); }
+                
+                30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+                
+                40%, 60% { transform: translate3d(4px, 0, 0); }
+            }
+        }
+
+        // ACTIVE BUTTON FOR TOP
+        .active{
+            padding: 4.5rem 1.5rem 2.2rem 1.5rem;
+            margin-right: 1rem;
+            overflow: hidden;
+            position: relative;
+            align-self: flex-start;
+
+            @media only screen and (max-width: $bp-md-sm){ padding: 3rem 1.5rem 2.2rem 1.5rem; }
+
+            @media only screen and (max-width: $bp-xsm){ margin-right: 0; }
+            
+            &::before {
+                content: '';
+                background-color: $color-black-transparent;
+                position: absolute;
+                border-bottom: 1px solid $color-white;
+                border-left: 1px solid $color-white;
+                border-right: 1px solid $color-white;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                transition: all .5s cubic-bezier(1, 0, 0, 1);
+                -webkit-transform: translateX(0);
+                    transform: translateX(0);
+            }
+        }
+
+        &__item:not(.active){
+            padding: 4.5rem 1.5rem 1.5rem 1.5rem;
+            margin-right: 1rem;
+            overflow: hidden;
+            position: relative;
+
+            @media only screen and (max-width: $bp-md-sm){ padding: 3rem 1.5rem 1.5rem 1.5rem; }
+            @media only screen and (max-width: $bp-xsm){
+                padding: 1.5rem 1rem;
+                margin-right: 0;
+            }
+
+            &::before {
+                content: '';
+                background-color: $color-black-transparent;
+                position: absolute;
+                top: 0;
+                right: -10%;
+                bottom: 0;
+                left: 0;
+                transition: all .5s cubic-bezier(1, 0, 0, 1);
+                -webkit-transform: translateY(-100%);
+                    transform: translateY(-100%);
+            }
+
+            @media only screen and (min-width: $bp-md-sm){
+                &:hover::before {
+                    -webkit-transform: translateY(0);
+                    transform: translateY(0);
+                }
+            }
+
+            @media only screen and (min-width: $bp-md-sm){
+                &:hover{
+                    border-bottom: 1px solid $color-white;
+                    border-left: 1px solid $color-white;
+                    border-right: 1px solid $color-white;
+                }
+            }
+        }
+    }
+}
+
+// DECREASE FONT SIZE FOR THE SMALL ACTIVE BUTTON
+.active-sm{
+    font-size: 1.5rem;
+
+    @media only screen and (max-width: $bp-md-sm){
+        font-size: 1rem;
+    }
+}

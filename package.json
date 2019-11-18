@@ -1,0 +1,28 @@
+{
+  "name": "bg-exam",
+  "version": "1.0.0",
+  "description": "Bulgarian Language State Maturity Exam helped",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "node-sass sass/main.scss public/style.css -w",
+    "devserver": "live-server",
+    "start": "npm-run-all --parallel devserver watch:sass",
+    "compile:sass": "node-sass sass/main.scss public/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' public/style.comp.css -o public/style.prefix.css",
+    "compress:css": "node-sass public/style.prefix.css public/style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass prefix:css compress:css"
+  },
+  "author": "Valeri Vladimirov",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "concat": "^1.0.3",
+    "node-sass": "^4.5.3",
+    "npm-run-all": "^4.1.1",
+    "postcss-cli": "^4.1.1"
+  },
+  "dependencies": {
+    "ejs": "^2.7.2",
+    "express": "^4.17.1"
+  }
+}

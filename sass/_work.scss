@@ -1,0 +1,247 @@
+/////////////////
+/// WORK PAGE ///
+/////////////////
+.work-page{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to right bottom, rgba($color-black, 0.9), rgba($color-black, 0.7)), url(background-4.jpg);
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    grid-template-columns:  minmax(min-content, 24rem) repeat(7, minmax(min-content, 15rem));
+    grid-template-rows: 1fr 1fr 1fr 30rem;
+    grid-gap: 2rem;
+
+    // HEADING
+    &__heading{
+        color: $color-white;
+        font-size: 3.4rem;
+        font-weight: 100; 
+        letter-spacing: .2rem;
+        text-transform: uppercase;
+        position: relative;
+        border-bottom: 1px solid $color-grey;
+        padding-bottom: 3rem;
+        grid-column: 3/7;
+        grid-row: 1/2;
+        align-self: flex-end;
+        justify-self: center;
+
+        // MEDIA QUERIES FOR HEADING
+        @media only screen and (min-width: $bp-laptop-big){
+            &:hover {
+                border: none;
+                transform: translateY(-1rem);
+                transition: all .3s;
+            }
+        }
+    
+        @media only screen and (max-width: $bp-laptop-big){
+            font-size: 2.5rem;
+            padding-bottom: 2rem;
+            align-self: flex-end;
+        }
+    
+        @media only screen and (max-width: $bp-md-sm){ padding-bottom: 1rem; }
+    
+        @media only screen and (max-width: $bp-xsm){ 
+            font-size: 1.6rem;
+            align-self: center;
+        }
+    
+        @media only screen and (max-width: $bp-xxsm){ font-size: 1.4rem; }
+    }
+
+    // ALIGNING THE SIDEBAR SPECIALLY FOR THE CURRENT PAGE AND MEDIA QUERIES FOR IT
+    @media only screen and (min-width: $bp-laptop-big){
+        .sidebar{
+            &__list{
+                margin-top: -13rem;
+            }
+        }
+    }
+
+    .sidebar{ 
+        @media only screen and (max-width: $bp-xxl){
+            .active{
+                padding: 4.5rem 1.5rem 1.6rem 1.5rem;
+
+                @media only screen and (max-width: $bp-md-sm){
+                    padding: 2.8rem 1rem 1.6rem 1rem;
+                    font-size: 1rem;
+                }
+
+                @media only screen and (max-width: $bp-xsm){
+                    padding: 1.5rem 1rem 1.5rem 1rem;
+                    font-size: 1.1rem;
+                }
+
+                @media only screen and (max-width: $bp-xsm){ font-size: .4rem; }
+            }
+        }
+
+        @media only screen and (max-width: $bp-md-sm){
+            &__item:not(.active){
+                font-size: 1rem;
+            }
+        }
+
+        @media only screen and (max-width: $bp-xsm){
+            &__item:not(.active){
+                font-size: .5rem;
+            }
+        }
+    }      
+}
+
+// STYLING ALL THE DETAILS FOR EACH AUTHOR'S WORK AND MEDIA QUERIES FOR THEM
+.work-details{
+    background-color: transparent;
+    border: 1px solid $color-white;
+    padding: 5rem 1rem 3rem 1rem;
+    grid-column: 3/7;
+    grid-row: 2/5;
+    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr min-content min-content;
+
+    @media only screen and (max-width: $bp-md-sm){ padding: 2rem 1rem; }
+    
+    &__name{
+        grid-column: 1/2;
+        grid-row: 1/2;
+        color: $color-grey;
+        font-size: 1.8rem;
+        justify-self: flex-start;
+        align-self: center;
+        margin-bottom: 3rem;
+        margin-left: 3rem;
+
+        span{
+            color: $color-white;
+            font-size: 1.6rem;
+            font-weight: 300;
+
+            @media only screen and (max-width: $bp-xsm){ font-size: 1rem; }
+        }
+
+        @media only screen and (max-width: $bp-xsm){ font-size: 1.2rem; }
+    }
+ 
+    &__author{
+        grid-column: 1/2;
+        grid-row: 1/2;
+        color: $color-grey;
+        font-size: 1.8rem;
+        margin-top: 3rem;
+        justify-self: flex-start;
+        align-self: center;
+        margin-left: 3rem;
+
+        span{
+            color: $color-white;
+            font-size: 1.6rem;
+            font-weight: 300;
+
+            @media only screen and (max-width: $bp-xsm){ font-size: 1rem; }
+        }
+
+        @media only screen and (max-width: $bp-xsm){ font-size: 1.2rem; }
+    }
+
+    &__date{
+        color: $color-grey;
+        font-size: 1.8rem;
+        white-space: initial;
+        grid-row: 1/2;
+        grid-column: 2/3;
+        margin-top: 3rem;
+        margin-left: 5rem;
+
+        span{
+            color: $color-white;
+            font-size: 1.6rem;
+            font-weight: 300;
+
+            @media only screen and (max-width: $bp-xsm){ font-size: 1rem; }
+        }
+
+        @media only screen and (max-width: $bp-xsm){ font-size: 1.2rem; }
+    }
+
+    &__genre{
+        color: $color-grey;
+        font-size: 1.8rem;
+        white-space: initial;
+        grid-row: 1/2;
+        grid-column: 2/3;
+        margin-bottom: 3rem;
+        margin-left: 5rem;
+
+        span{
+            color: $color-white;
+            font-size: 1.6rem;
+            font-weight: 300;
+
+            @media only screen and (max-width: $bp-xsm){ font-size: 1rem; }
+        }
+
+        @media only screen and (max-width: $bp-xsm){ font-size: 1.2rem; }
+    }
+
+    .about{
+        color: $color-white;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        white-space: initial;
+        padding: 3rem;
+        grid-row: 2/3;
+        grid-column: 1/3;
+        align-self: center;
+        justify-self: center;
+
+        i{ 
+            margin-right: 1rem;
+            color: $color-grey;
+        }
+
+        @media only screen and (max-width: $bp-md-sm){
+            font-size: 1.2rem;
+            line-height: 1.6rem;
+        }
+    }
+}
+
+.work-players{
+    color: $color-white;
+    font-size: 1.6rem;
+    font-weight: 300;
+    list-style: none;
+    white-space: initial;
+    grid-row: 3/4;
+    grid-column: 1/4;
+    grid-gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(10rem, max-content));
+    align-content: flex-start;
+    justify-content: space-around;
+
+    & > *:hover{
+        transition: all .3s;
+        font-weight: 700;
+    }
+
+    i {
+        color: $color-grey;
+        margin-right: .5rem;
+        font-size: 1.5rem;
+
+        @media only screen and (max-width: $bp-xsm){ font-size: 1rem; }
+    }
+
+    @media only screen and (max-width: $bp-xsm){
+        font-size: 1.2rem;
+        font-weight: 100;
+    }
+}

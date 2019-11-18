@@ -1,0 +1,163 @@
+////////////////////////
+/// INFORMATION PAGE ///
+////////////////////////
+.information-page{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to right bottom, rgba($color-black, 0.8), rgba($color-black, 0.8)), url(background-3.jpg);
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    grid-template-columns:  minmax(min-content, 24rem) repeat(7, minmax(min-content, 15rem));
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 2rem;
+
+    @media only screen and (max-width: $bp-xsm){
+        grid-template-rows: repeat(5, 1fr);
+    }
+
+    // HEADING
+    &__heading{ 
+        color: $color-white;
+        font-size: 4rem;
+        font-weight: 100; 
+        letter-spacing: .2rem;
+        text-transform: uppercase;
+        position: relative;
+        border-bottom: 1px solid $color-grey;
+        padding-bottom: 3rem;
+        align-self: center;
+        justify-self: center;
+        grid-column: 3/7;
+        grid-row: 1/2;
+    
+        // MEDIA QUERIES FOR HEADING
+        @media only screen and (min-width: $bp-md-sm){
+            &:hover {
+                font-size: 4.5rem;
+                border: none;
+                transform: translateY(-1rem);
+                transition: all .3s;
+            }
+        }
+
+        @media only screen and (max-width: $bp-laptop-big){
+            font-size: 3rem;
+            padding-bottom: 2.5rem;
+            align-self: flex-end;
+        }
+
+        @media only screen and (max-width: $bp-md-sm){
+            font-size: 2.5rem;
+            padding-bottom: 1rem;
+        }
+
+        @media only screen and (max-width: $bp-xsm){
+            font-size: 1.6rem;
+            align-self: center;
+        }
+
+        @media only screen and (max-width: $bp-xxsm){ font-size: 1.4rem; }
+    }
+
+    // ALIGNING THE SIDEBAR SPECIALLY FOR THE CURRENT PAGE AND MEDIA QUERIES FOR IT
+    .sidebar{
+        @media only screen and (max-width: $bp-xxl){
+            .active{
+                padding: 4.5rem 1.5rem 1.6rem 1.5rem;
+
+                @media only screen and (max-width: $bp-md-sm){
+                    padding: 3rem 1.5rem 1.6rem 1.5rem;
+                    font-size: 1.6rem;
+                }
+
+                @media only screen and (max-width: $bp-xsm){
+                    padding: 1.5rem 1rem 1.5rem 1rem;
+                    font-size: 1.1rem;
+                }
+
+                @media only screen and (max-width: $bp-xsm){ font-size: .7rem; }
+            }
+        }
+    }
+}
+
+// STYLING ALL THE DETAILS FOR THE INFO PAGE BOX AND MEDIA QUERIES FOR THEM
+.information{
+    color: $color-white;
+    background-color: transparent;
+    padding: 5rem 1rem 3rem 1rem;
+    border: 1px solid $color-white;
+    grid-column: 3/7;
+    grid-row: 2/5;
+    align-self: start;
+
+    &__heading--3{
+        color: $color-white;
+        font-size: 2.5rem;
+        font-weight: 300; 
+        letter-spacing: .2rem;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 0;
+        margin-bottom: 2rem;
+        transition: all .2s;
+
+        &:not(:first-child){ margin-top: 2rem; }
+
+        @media only screen and (max-width: $bp-xsm){ font-size: 1.6rem; }
+
+        @media only screen and (min-width: $bp-md-sm){
+            &:hover{
+                transform: translateY(-0.5rem);
+                font-size: 3rem;
+            }
+        }
+    }
+
+    &__text{
+        color: $color-white;
+        font-size: 1.6rem;
+        font-weight: 100;
+        text-align: center;
+        white-space: initial;
+        line-height: 2.5rem;
+        padding: 0 2rem;
+
+        span{ font-weight: 700; }
+
+        @media only screen and (max-width: $bp-md-sm){
+            font-size: 1.2rem;
+            line-height: 1.6rem;
+        }
+    }
+
+    .resources{
+        display: flex;
+        list-style: none;
+        color: $color-white;
+        font-size: 1.6rem;
+        margin-top: 2rem;
+        justify-content: space-around;
+
+        &__item a{
+            color: $color-white;
+            text-decoration: none;
+            transition: all .2s;
+
+            i{ margin-right: .5rem; }
+
+            &:hover{ color: $color-grey; }
+        }
+
+        @media only screen and (max-width: $bp-md-sm){
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-items: center;
+            font-size: 1.2rem;
+        }
+
+        @media only screen and (max-width: $bp-xsm){ font-size: .8rem; }
+    }
+}
+

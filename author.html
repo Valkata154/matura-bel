@@ -1,0 +1,46 @@
+<!------------------------------------>
+<!-- PAGE TEMPLATE FOR EVERY AUTHOR -->
+<!------------------------------------>
+<!DOCTYPE html>
+<html lang="Bulgarian">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/static/style.css">
+        <script src="https://kit.fontawesome.com/4d10275504.js" crossorigin="anonymous"></script>
+        <title>The state mat exam helper.</title>
+    </head>
+    <body>
+        <!-- All information about an author with text to be replaced for each author -->
+        <section class="author-page">
+            <h1 class="author-page__heading">{%AUTHORNAME%}</h1>
+            <div class="author-details">
+                <img src="{%IMAGE%}" alt="Photo of me" class="author-details__image">
+                <div class="author-details__col">
+                    <span class="author-details__name">{%AUTHORNAME%}</span>
+                    <p class="author-details__direction"><i class="fas fa-pen"></i>{%DIRECTION%}</p>
+                    <p class="author-details__born"><i class="far fa-heart"></i>{%BIRTH%}</p>
+                    <p class="author-details__location"><i class="fas fa-map-marker-alt"></i>{%TOWN%}</p>
+                    <p class="author-details__death"><i class="fas fa-cross"></i>{%DEATH%}</p>
+                </div>
+                <p class="about"><i class="fas fa-info"></i>{%DESCRIPTION%}</p>
+                <ul class="author-works">
+                    {%WORKS%}
+                </ul>
+            </div>
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <i class="fas fa-book sidebar__icon"></i>
+                <ul class="sidebar__list">
+                    <a href="/"><li class="sidebar__item">Начало</li></a>
+                    <a href="/literature"><li class="sidebar__item">Автори</li></a>
+                    <li class="sidebar__item active active-sm">{%AUTHORNAMESHORT%}</li>
+                    <a href="/information"><li class="sidebar__item">Инфо</li></a>
+                    <a href="/contact"><li class="sidebar__item">Контакти</li></a>
+                </ul>
+                <p class="sidebar__created-by">&copy;Сайтът е направен от Валери Владимиров.</p>
+            </div>
+        </section>
+    </body>
+</html>

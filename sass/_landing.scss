@@ -1,0 +1,33 @@
+// LANDING PAGE
+.landing {
+    width: 100%;
+    height: auto;
+    background-image: 
+        linear-gradient(rgba($color-black, 0.8), rgba($color-black, 0.8)),
+        url(image-pen.jpg);
+    background-size: cover;
+    background-position: left;
+    object-fit: cover;
+    position: relative;
+}
+
+// IMAGES
+    .image {
+        flex-direction: column;
+        display: flex;
+    }
+    .img--1 {
+        width: 70%;
+        height: 100vh;
+        -webkit-clip-path: polygon(35% 0, 100% 0%, 100% 100%, 15% 100%);
+        clip-path: polygon(35% 0, 100% 0%, 100% 100%, 15% 100%);
+        align-self: flex-end;
+        object-fit: cover;
+        z-index: 10;
+        filter: brightness(25%);
+    
+        @media only screen and (max-width: $bp-sm){
+            -webkit-clip-path: polygon(30% 0, 100% 0, 100% 100%, 30% 100%);
+            clip-path: polygon(30% 0, 100% 0, 100% 100%, 30% 100%);
+        }
+    }

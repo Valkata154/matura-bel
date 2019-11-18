@@ -1,0 +1,37 @@
+// COLORS AND VARIABLES
+$color-black-transparent: rgba(255, 255, 255, 0.5);
+$color-black-transparent-2: rgba(0, 0, 0, 0.7);
+$color-white: #fff;
+$color-black: #000;
+$color-grey: grey;
+
+//////////////////////////////////////////////
+// WORKS BEST ON 
+// 1440px , 1366px, 1024px, 768px, 425px WIDTH
+//////////////////////////////////////////////
+
+// BREAKPOINTS
+$bp-xxl: 87.5em; // 1400px
+$bp-laptop-big: 85.8em; // 1366px
+$bp-xl: 75em; // 1200px
+$bp-laptop-small: 65em; // 1024px
+$bp-l: 62.5em; // 1000px
+$bp-md: 56.25em; // 900px
+$bp-md-sm: 50em; // 800px
+$bp-sm: 37.5em; // 600px
+$bp-xsm: 31.25em; // 500px
+$bp-xxsm: 23.5em; // 375px
+
+// GLOBAL RESET
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: 'Roboto', sans-serif;
+}
